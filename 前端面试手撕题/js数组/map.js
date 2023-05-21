@@ -22,3 +22,5 @@ let test = [1, 2, 3, 4];
 test.map_((item, index, arr) => {
   console.log(item + 1, "arr");
 });
+console.log(test)
+
