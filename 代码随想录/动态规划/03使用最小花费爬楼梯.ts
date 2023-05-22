@@ -2,7 +2,7 @@
  * 1. 确定dp数组及其下标的含义:
  *    dp[i]: 达到第i个楼层的最低花费
  * 2. 确定递推公式
- *    dp[i] = min(dp[i-1] + cose[i - 1],dp[i - 2] + cost[i - 2])
+ *    dp[i] = min(dp[i-1] + cost[i - 1],dp[i - 2] + cost[i - 2])
  * 3. dp数组如何初始化
  *    dp[0] = 0
  *    dp[0] = 0
