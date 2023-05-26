@@ -29,9 +29,8 @@ function throttle(fn, delay) {
                 timer = null
                 console.log('throttle')
                 console.log(this, 'this') // this指的是全局对象
-                fn.apply(this)
+                fn.apply(this, arg)
             }, delay)
         }
     }()
 }
-// throttle(() => { console.log('hhh') }, 1000)
