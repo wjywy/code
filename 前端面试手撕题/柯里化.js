@@ -19,7 +19,7 @@
  * @param fn 待柯里化的函数
  * @param len 所需的参数个数，默认为原函数的形参个数
  */
-function curry_(fn: Function, len = fn.length) {
+function curry_(fn, len = fn.length) {
   return _curry.call(this, fn, len);
 }
 
@@ -29,13 +29,22 @@ function curry_(fn: Function, len = fn.length) {
  * @param len 所需的参数个数
  * @param args 已接收的参数列表
  */
-function _curry(fn: Function, len: number, ...args) {
+function _curry(fn, len, ...args) {
+  /**可以试试返回箭头函数，这样后面就可以不用apply、call重新指定this了 */
   return function (...params) {
-    let _args = [...args, ...params];
+    let _args = [...args, ...params]; /**合并参数 */
     if (_args.length >= len) {
-      return fn.apply(this, _args);
+      return fn.apply(this, _args); /**参数长度满足，则直接执行 */
     } else {
-      return _curry.call(this, fn, len, ...args);
+      /**否则就递归返回柯里化函数，等待参数的传入 */
+      return _curry.call(this, fn, len, ..._args);
     }
   };
 }
+
+let _fn = curry_(function (a, b, c, d, e) {
+  console.log(a, b, c, d, e);
+});
+
+let cur = _fn(1, 2, 3, 4);
+cur(5)  // print: 1,2,3,4,5
