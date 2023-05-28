@@ -36,9 +36,12 @@ function testWeightBagProblem(
   const dp: number[][] = new Array(goodsNum)
     .fill(0)
     .map((_) => new Array(size + 1).fill(0));
+
+  /**初始化 */
   for (let i = weight[0]; i <= size; i++) {
     dp[0][i] = value[0];
   }
+
   for (let i = 1; i < goodsNum; i++) {
     for (let j = 1; j <= size; j++) {
       if (j < weight[i]) {
