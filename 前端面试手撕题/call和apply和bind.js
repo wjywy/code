@@ -65,4 +65,20 @@ bar.apply_(foo, ['wujiayu', 18])
  * 
  * 返回一个函数
  * 可以传入参数
+ * 
+ * 在函数内实现call或apply即可
  */
+Function.prototype.bind_ = function (context, ...args) {
+    let cur = this
+
+    function newFun(...restArgs) {
+        let newArgs = [...args, ...restArgs]
+        let signalName = Symbol('myBind')
+        context[signalName] = cur
+        let result = context[signalName](...newArgs)
+        delete context[signalName]
+        return result
+    }
+
+    return newFun
+}
