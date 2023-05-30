@@ -11,6 +11,8 @@
  * step 1. 创建一个空对象
  * step 2. 将obj的_proto_属性指向实例的prototype
  * step 3. 吧构造函数的this执行obj，并执行构造函数fn把结果赋值给result
+ * 
+ * object.create():创建一个新对象，使用现有的对象来提供新创建的对象的_proto_
  */
 function new_(fn, ...args) {
     if (Object.prototype.toString.call(fn) !== '[object Function]') {

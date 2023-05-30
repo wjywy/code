@@ -14,7 +14,7 @@ const strStr = function (haystack, needle) {
         next.push(j);
 
         for (let i = 1; i < needle.length; i++) {
-            console.log(i);
+            console.log(i, 'i');
             while (j > 0 && needle[i] !== needle[j]) {   // 
                 j = next[j - 1];
                 console.log(j, 'next[j-1]');
