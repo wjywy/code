@@ -76,7 +76,6 @@ class Promise_ {
               throw new Error('不能返回自身')
             }
             if (x instanceof Promise_) {
-
               x.then(resolve, reject)
             } else {
               /**非Promise则直接成功 */
@@ -217,3 +216,4 @@ class Promise_ {
     })
   }
 }
+

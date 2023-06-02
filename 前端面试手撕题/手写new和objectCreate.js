@@ -42,3 +42,6 @@ let res = new test('wujiyau', 19)
 console.log(res, 'res')
 console.log(res.length, 'res.length') // undefined
 
+/**
+ * 手写object.create()
+ */
