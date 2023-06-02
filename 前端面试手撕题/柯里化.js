@@ -20,6 +20,7 @@
  * @param len 所需的参数个数，默认为原函数的形参个数
  */
 function curry_(fn, len = fn.length) {
+  console.log(this, 'this')
   return _curry.call(this, fn, len);
 }
 
@@ -45,5 +46,5 @@ let _fn = curry_(function (a, b, c, d, e) {
   console.log(a, b, c, d, e);
 });
 
-let cur = _fn(1, 2, 3, 4);
-cur(5)  // print: 1,2,3,4,5
+let cur = _fn(1, 2, 3);
+cur(4, 5)  // print: 1,2,3,4,5
