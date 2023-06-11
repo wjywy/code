@@ -15,35 +15,14 @@ namespace A {
    * @param node
    * @returns
    */
-  /**递归，前序遍历 */
-  const minTree = (node: TreeNode | null): number => {
-    if (node === null) return 0;
-    let count: number = 0;
-    let res: number = 0;
-
-    const recur = (root: TreeNode | null, count: number) => {
-      if (root === null) {
-        res = res < count ? res : count;
-        return;
-      }
-
-      recur(root.left, count++);
-      recur(root.right, count++);
-    };
-
-    recur(node, count);
-
-    return res;
-  };
-
   /**迭代，层序遍历 */
 
-  const everyMinTree = (node: TreeNode | null): number => {
-    if (node === null) return 0;
+  const everyMinTree = (root: TreeNode | null): number => {
+    if (root === null) return 0;
 
     let helpStack: TreeNode[] = [];
     let count: number = 0;
-    helpStack.push(node);
+    helpStack.push(root);
 
     while (helpStack.length > 0) {
       let length = helpStack.length;

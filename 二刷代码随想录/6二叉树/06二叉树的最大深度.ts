@@ -15,20 +15,20 @@ namespace A {
    * @param node
    * @returns
    */
-  const maxDepth = (node: TreeNode | null): number => {
-    if (node === null) return 0;
+  const maxDepth = (root: TreeNode | null): number => {
+    if (root === null) return 0;
     let count: number = 0;
     let res: number = 0;
     const depth = (root: TreeNode | null, count: number) => {
       if (root === null) {
-        res = res >= count ? res : count;
+        res = res > count ? res : count;
         return;
       }
 
-      depth(root.left, count++);
-      depth(root.right, count++);
+      depth(root.left, count + 1);
+      depth(root.right, count + 1);
     };
-    depth(node, count);
+    depth(root, count);
     return res;
   };
 }
