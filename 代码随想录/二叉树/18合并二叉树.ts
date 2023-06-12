@@ -11,6 +11,12 @@ namespace A {
     }
   }
 
+  /**
+   * 这里以树一作为合并之后的树
+   * @param root1
+   * @param root2
+   * @returns
+   */
   const mergeTree = (root1: TreeNode, root2: TreeNode): TreeNode => {
     if (root1 === null) return root2;
     if (root2 === null) return root1;
