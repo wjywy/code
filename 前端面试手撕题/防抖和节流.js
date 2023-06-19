@@ -15,7 +15,7 @@ function debounce(fn, delay) {
         mark = setTimeout(() => {
             console.log('防抖')
             console.log(this, 'this') // this指的是全局对象
-            fn.call(thiss)
+            fn.call(this)
         }, delay)
     }
     return debounce_()

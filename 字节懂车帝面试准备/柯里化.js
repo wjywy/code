@@ -7,7 +7,7 @@ function __curry(fn, len, ...args) {
         if (newArgs.length >= len) {
             fn.call(this, ...newArgs)
         } else {
-            __curry.call(this, fn, len, ...args)
+            __curry.call(this, fn, len, ...newArgs)
         }
     }
 }

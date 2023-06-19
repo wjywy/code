@@ -217,3 +217,28 @@ class Promise_ {
   }
 }
 
+/**
+ * 
+ * @param {Promise[]} allPromise 
+ * @returns 
+ */
+const all = (allPromise) => {
+  return new Promise((resolve, reject) => {
+    let count = 0
+    let result = []
+
+    const addData = (item, index) => {
+      result[index] = item
+      count++
+      if (count === allPromise.length) {
+        resolve(result)
+      }
+    }
+
+    allPromise.forEach((item, index) => {
+      if (item instanceof Promise) {
+        Promise.then((res) => { addData(res, index) }, (err) => { reject(err) })
+      }
+    })
+  })
+}

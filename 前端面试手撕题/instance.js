@@ -6,8 +6,8 @@
 
 /**
  * 
- * @param {any} obj 
- * @param {new xxx} pro 
+ * @param {any} obj
+ * @param {new xxx} pro
  * @returns 
  */
 function instance_(obj, pro) {
