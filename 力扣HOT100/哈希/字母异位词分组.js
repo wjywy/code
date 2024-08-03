@@ -13,8 +13,13 @@ const strGroup = (strs) => {
         for (const c of str) {
             count[c.charCodeAt() - 'a'.charCodeAt()]++;
         }
+        console.log(count)
         map[count] ? map[count].push(str) : map[count] = [str];
     }
 
+    console.log(map)
+
     return Object.values(map);
 }
+
+console.log(strGroup(["eat", "tea", "tan", "ate", "nat", "bat"]))

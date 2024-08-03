@@ -13,7 +13,7 @@ const mergeNum = (intervals) => {
 
     for (let i = 1; i < nums.length; i++) {
         let cur = nums[i];
-        if (prev[1] > cur[0]) {
+        if (prev[1] >= cur[0]) {
             prev[1] = Math.max(prev[1], cur[1]);
         } else {
             res.push(prev);
