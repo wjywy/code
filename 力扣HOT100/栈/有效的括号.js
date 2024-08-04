@@ -3,16 +3,21 @@
  * @param {string} s 
  */
 const isValid = (s) => { 
-    const stack = [];
+    const stack = []
+
     for (let i = 0; i < s.length; i++) {
         if (s[i] === '(' || s[i] === '[' || s[i] === '{') {
-            stack.push(s[i]);
+            stack.push(s[i])
         } else {
-            if (stack.length === 0) return false;
-            if (s[i] === ')' && stack.pop() !== '(') return false;
-            else if (s[i] === ']' && stack.pop() !== '[') return false;
-            else if (s[i] === '}' && stack.pop() !== '{') return false;
+            if (stack.length === 0) return false
+            const cur = stack.pop()
+            if (s[i] === ')' && cur !== '(') return false
+
+            if (s[i] === ']' && cur !== '[') return false
+
+            if (s[i] === '}' && cur !== '{') return false
         }
     }
-    return stack.length === 0;
+
+    return stack.length === 0
 }
