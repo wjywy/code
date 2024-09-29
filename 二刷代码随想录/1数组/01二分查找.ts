@@ -19,4 +19,4 @@ const middleSearch = (nums: number[], target: number): number => {
   }
   return -1;
 };
-console.log(middleSearch([-1, 2, 3, 4, 5, 6, 7, 8], 2));
+console.log(middleSearch([1], 1));

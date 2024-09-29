@@ -1,22 +1,33 @@
-class LinkNode {
-    constructor(val, next) {
-        this.val = val;
-        this.next = next;
-    }
-}
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
 
-function circleNode(head) {
-    if (!head || !head.next) return null;
-    let slow = head.next, fast = head.next.next;
-    while (fast && fast.next && fast !== slow) {
-        slow = slow.next;
-        fast = fast.next.next;
+/**
+ * @param {ListNode} head
+ * @return {boolean}
+ */
+var hasCycle = function (head) {
+
+    if (!head || !head.next) return false
+    let speed = head
+    let low = head
+
+    while (speed.next !== low) {
+        if (low.next !== null) {
+            low = low.next
+        } else {
+            return false
+        }
+        if (!speed || !speed.next) return false
+        if (speed.next.next !== null) {
+            speed = speed.next.next
+        } else {
+            return false
+        }
     }
-    if (!fast || !fast.next) return null;
-    slow = head;
-    while (fast !== slow) {
-        slow = slow.next;
-        fast = fast.next;
-    }
-    return slow;
-}
+    return true
+};

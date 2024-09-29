@@ -36,6 +36,7 @@ function _curry(fn, len, ...args) {
     if (_args.length >= len) {
       return fn.apply(this, _args); /**参数长度满足，则直接执行 */
     } else {
+      console.log(this, 'this') // 全局global
       /**否则就递归返回柯里化函数，等待参数的传入 */
       return _curry.call(this, fn, len, ..._args);
     }

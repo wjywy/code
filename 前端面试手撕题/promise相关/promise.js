@@ -242,3 +242,36 @@ const all = (allPromise) => {
     })
   })
 }
+
+/**
+ * 
+ * @param {Promise[]} allPromise 
+ */
+const promiseAll = (allPromise) => {
+  return new Promise((resolve, reject) => {
+    let count = 0
+    let result = []
+
+    /**
+     * 
+     * @param {any} res 
+     * @param {number} index 
+     */
+    const addData = (res, index) => {
+      result[index] = res
+      count++
+
+      if (count === allPromise.length) {
+        resolve(result)
+      }
+    }
+
+    allPromise.forEach((item, index) => {
+      if (item instanceof Promise) {
+        item.then((res) => { addData(res, index) }, (err) => { reject(err) })
+      } else {
+        addData(item, index)
+      }
+    })
+  })
+}

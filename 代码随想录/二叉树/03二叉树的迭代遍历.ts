@@ -28,23 +28,38 @@ namespace A {
     return res;
   }
 
-  // 中序遍历的迭代(左中右)
-  // function middle(node: TreeNode | null): number[] {
-  //   if (node === null) return [];
-  //   let helpStack: TreeNode[] = [];
-  //   let res: number[] = [];
-  //   let cur: TreeNode | null = node;
+  // 中序遍历（迭代法）
+  function inorderTraversal(root: TreeNode | null): number[] {
+    let helperStack: TreeNode[] = [];
+    let res: number[] = [];
+    if (root === null) return res;
+    let curNode: TreeNode | null = root;
+    while (curNode !== null || helperStack.length > 0) {
+      if (curNode !== null) {
+        helperStack.push(curNode);
+        curNode = curNode.left;
+      } else {
+        curNode = helperStack.pop()!;
+        res.push(curNode.val);
+        curNode = curNode.right;
+      }
+    }
+    return res;
+  }
 
-  //   while (cur !== null && helpStack.length > 0) {
-  //     if (cur !== null) {
-  //       helpStack.push(cur);
-  //       cur = cur.left;
-  //     } else {
-  //       cur = helpStack.pop()!;
-  //       res.push(cur.val);
-  //       cur = cur.right;
-  //     }
-  //   }
-  //   return res;
-  // }
+  // 后序遍历（迭代法）
+  function postorderTraversal(root: TreeNode | null): number[] {
+    let helperStack: TreeNode[] = [];
+    let res: number[] = [];
+    let curNode: TreeNode;
+    if (root === null) return res;
+    helperStack.push(root);
+    while (helperStack.length > 0) {
+      curNode = helperStack.pop()!;
+      res.push(curNode.val);
+      if (curNode.left !== null) helperStack.push(curNode.left);
+      if (curNode.right !== null) helperStack.push(curNode.right);
+    }
+    return res.reverse();
+  }
 }

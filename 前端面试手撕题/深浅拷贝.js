@@ -42,7 +42,6 @@ function deepCopy(target) {
 
   for (let key in target) {
     if (target.hasOwnProperty(key)) {
-      console.log(key, 'key')
       if (typeof target[key] === 'object') {
         newObj[key] = deepCopy(target[key])
       } else {

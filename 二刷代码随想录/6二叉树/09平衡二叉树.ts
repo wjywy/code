@@ -37,7 +37,6 @@ namespace A {
       return pre;
     };
 
-    /**采用层序遍历遍历每一个节点 */
     let helpStack: TreeNode[] = [];
     helpStack.push(root);
 

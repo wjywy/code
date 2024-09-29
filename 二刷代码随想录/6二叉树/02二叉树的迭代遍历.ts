@@ -36,16 +36,36 @@ namespace A {
     return result;
   };
 
-  const middleReverse = (node: TreeNode | null) => {
-    if (node === null) return false;
+  // const middleReverse = (node: TreeNode | null) => {
+  //   if (node === null) return false;
 
-    let helpStack: TreeNode[] = [];
+  //   let helpStack: TreeNode[] = [];
+  //   let result: number[] = [];
+  //   let curNode: TreeNode | null = node;
+
+  //   while (helpStack.length > 0 || curNode !== null) {
+  //     if (curNode !== null) {
+  //       helpStack.push(curNode);
+  //       curNode = curNode.left;
+  //     } else {
+  //       curNode = helpStack.pop()!;
+  //       result.push(curNode.value);
+  //       curNode = curNode.right;
+  //     }
+  //   }
+
+  //   return result;
+  // };
+
+  const middle = (root: TreeNode | null) => {
+    if (root === null) return null;
+
     let result: number[] = [];
-    let curNode: TreeNode | null = node;
+    let helpStack: TreeNode[] = [];
+    let curNode: TreeNode | null = root;
 
     while (helpStack.length > 0 || curNode !== null) {
       if (curNode !== null) {
-        helpStack.push(curNode);
         curNode = curNode.left;
       } else {
         curNode = helpStack.pop()!;

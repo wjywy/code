@@ -57,8 +57,8 @@ namespace A {
       right: number
     ): TreeNode | null {
       if (left > right) return null;
-      let mid: number = Math.floor((left + right) / 2);
-      const root: TreeNode = new TreeNode(nums[mid]);
+      let mid: number = Math.floor((left + right) / 2); // 查找中间节点
+      const root: TreeNode = new TreeNode(nums[mid]); // 构建二叉树节点
       root.left = recur(nums, left, mid - 1);
       root.right = recur(nums, mid + 1, right);
       return root;

@@ -15,7 +15,7 @@ function instance_(obj, pro) {
     if (obj === null) return false
 
     let proto = Object.getPrototypeOf(obj) /**拿到参数的原型对象*/
-    console.log(proto, 'proto')
+    console.log(pro.prototype, 'proto')
     console.log(Array.prototype)
 
     /**顺着原型链去找，直到找到相同的原型对象，返回true */

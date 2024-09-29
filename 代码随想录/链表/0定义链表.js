@@ -6,3 +6,12 @@ class listNode {
         this.next = null;
     }
 }
+
+class LinkNode {
+    val
+    next = null
+    constructor() {
+        this.val = val
+        this.next = null
+    }
+}

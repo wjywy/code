@@ -34,5 +34,6 @@ namespace A {
     }
     if (left !== null) return left;
     if (right !== null) return right;
+    return null;
   };
 }

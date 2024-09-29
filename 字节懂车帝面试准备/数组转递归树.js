@@ -5,45 +5,36 @@
 //   parent: number;
 //   children?: Tree[];
 // };
-const list = [
-  { name: 'A', key: 1, parent: 0 },
-  { name: 'B', key: 2, parent: 0 },
-  { name: 'C', key: 3, parent: 1 },
-  { name: 'D', key: 4, parent: 1 },
-  { name: 'E', key: 5, parent: 3 },
-  { name: 'F', key: 6, parent: 5 },
-  { name: 'G', key: 7, parent: 2 },
-]
+const array = [
+  { id: 1, name: 'Node 1', parentId: null },
+  { id: 2, name: 'Node 2', parentId: null },
+  { id: 3, name: 'Node 3', parentId: 1 },
+  { id: 4, name: 'Node 4', parentId: 2 },
+  { id: 5, name: 'Node 5', parentId: 2 },
+  { id: 6, name: 'Node 6', parentId: 3 },
+];
 /**
  * 相同parent同级排列，
  * parent为0说明在顶层，parent就是父级元素的key
  * @param {*} list 
  * @returns 
  */
-function reverseTree(list) {
-  const res = []
+function buildTree(array, parentId = null) {
+  const tree = [];
 
-  let itemMap = {}
-  list.forEach(item => {
-    itemMap[item.key] = { ...item, children: [] }
-  })
-
-  console.log(itemMap, 'itemmap')
-  list.forEach(item => {
-    const treeItem = itemMap[item.key]; //获取当前项
-
-    if (treeItem.parent !== 0) {
-      console.log(treeItem, 'pitem')
-      itemMap[treeItem.parent].children.push(treeItem)
-    } else {
-      // console.log(pItem, 'pitem') 
-      // console.log(treeItem, 'treeItem')
-      // 如果没有父级说明在顶层
-      res.push(treeItem)
+  for (const item of array) {
+    if (item.parentId === parentId) {
+      const children = buildTree(array, item.id);
+      if (children.length > 0) {
+        item.children = children;
+      }
+      tree.push(item);
     }
-  })
-  console.log(res, 'res')
-  return res
+  }
+
+  return tree;
 }
-reverseTree(list)
-// }
+
+const tree = buildTree(array);
+console.log(tree);
+

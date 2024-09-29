@@ -36,3 +36,40 @@ function throttle(fn, delay) {
         }
     }()
 }
+
+
+// 防抖
+/**
+ * 
+ * @param {Function} fn 
+ * @param {number} delay 
+ */
+const debounce__ = (fn, delay) => {
+    const timer = null
+
+    return (() => {
+        clearTimeout(timer)
+        timer = setTimeout(() => {
+            fn.call(this)
+        }, delay)
+    })
+}
+
+// 节流
+/**
+ * 
+ * @param {Function} fn 
+ * @param {number} delay 
+ */
+const throttle__ = (fn, delay) => {
+    const timer = null
+
+    return ((args) => {
+        if (!timer) {
+            timer = setTimeout(() => {
+                timer = null
+                fn.apply(this, args)
+            }, delay)
+        }
+    })
+}

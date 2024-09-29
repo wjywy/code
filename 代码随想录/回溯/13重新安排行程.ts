@@ -52,3 +52,8 @@ namespace A {
     ["ATL", "SFO"],
   ]);
 }
+
+type eventHandle = (...args: string[]) => void;
+class EmitEmitter {
+  public event: { [eventName: string]: eventHandle[] } = {};
+}

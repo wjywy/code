@@ -55,3 +55,19 @@ namespace A {
     return res;
   }
 }
+
+const front = (root: TreeNode) => {
+  const traval = (node: TreeNode | null, result: number[]) => {
+    if (node === null) return;
+
+    result.push(node.value);
+    traval(root.left, result);
+    traval(root.right, result);
+
+    return result;
+  };
+  let result: number[] = [];
+  traval(root, result);
+
+  return result;
+};
