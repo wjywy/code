@@ -18,7 +18,7 @@ class myQueue {
         this.stackOut.push(this.stackIn.pop()!);
       }
     }
-    return this.stackOut.pop()!; // 非空断言
+    return this.stackOut.pop()!; 
   }
   peek(): number {
     const temp: number = this.pop();
